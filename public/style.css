@@ -1,0 +1,179 @@
+/* Global font + transitions */
+body {
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+/* Light theme */
+body.light {
+  background: #f0f2f5;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Dark theme */
+body.dark {
+  background: #18191a;
+  color: #e4e6eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Chat container */
+.chat-container {
+  background: white;
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: none;
+  overflow: hidden;
+  transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+body.dark .chat-container {
+  background: #242526;
+}
+
+/* Messages */
+#messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+/* Message bubbles */
+.message {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+  transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+.message.self {
+  background: #007aff;
+  color: white;
+  margin-left: auto;
+}
+
+.message.other {
+  background: #e5e5ea;
+  color: black;
+  margin-right: auto;
+}
+
+body.dark .message.other {
+  background: #3a3b3c;
+  color: #e4e6eb;
+}
+
+/* Username inside message bubble */
+.username {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-bottom: 2px;
+  transition: color 0.75s ease, opacity 0.75s ease;
+}
+
+/* Actual message text */
+.message div:last-child {
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.75s ease;
+}
+
+/* Input form */
+#form {
+  display: flex;
+  border-top: 1px solid #ddd;
+  transition: border-color 0.75s ease;
+}
+
+body.dark #form {
+  border-top: 1px solid #3a3b3c;
+}
+
+#input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  transition: background-color 0.75s ease, color 0.75s ease;
+}
+
+body.dark #input {
+  background: #3a3b3c;
+  color: #e4e6eb;
+}
+
+/* Send button */
+#form button {
+  background: #007aff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.75s ease, color 0.75s ease;
+  box-shadow: none;
+  outline: none;
+  appearance: none;
+}
+
+#form button:hover {
+  background: #005bb5;
+}
+
+/* Theme toggle button */
+#themeToggle {
+  margin: 8px;
+  padding: 6px 12px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.75s ease, color 0.75s ease;
+  box-shadow: none;
+  outline: none;
+  appearance: none;
+}
+
+body.dark #themeToggle {
+  background: #e4e6eb;
+  color: #18191a;
+}
+
+/* Change Username button */
+#changeNameBtn {
+  margin: 12px;
+  padding: 10px 20px;
+  background: #34c759;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.75s ease, color 0.75s ease;
+  box-shadow: none;
+  outline: none;
+  appearance: none;
+}
+
+#changeNameBtn:hover {
+  background: #28a745;
+}
