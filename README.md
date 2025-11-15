@@ -4,4 +4,4 @@ Chat App lets people chat in real-time through your web browser. It has light an
 
 # Installation
 
-To install it, make sure you have Homebrew installed. If you don't have it installed, click [here](https://www.brew.sh) and follow the instructions to download it. Then, run `brew install node` in your terminal. Now, run this command in terminal: `npm install express socket.io`. To start the website, run the terminal command node server.js. Make sure you are in the chat-app folder when running the command. Now, it will be hosted on your computer on port 3000!
+You can only host Chat App on a Mac. To install it, make sure you have Homebrew installed. If you don't have it installed, click [here](https://www.brew.sh) and follow the instructions to download it. Then, run `brew install node` in your terminal. Now, run this command in terminal: `npm install express socket.io`. To start the website, run the terminal command node server.js. Make sure you are in the chat-app folder when running the command. Now, it will be hosted on your computer on port 3000!
