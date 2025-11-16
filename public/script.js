@@ -54,27 +54,50 @@ socket.on("chat message", (data) => {
   addMessageToUI(data);
 });
 
-// Change username button
+// Change username button (self only)
 changeNameBtn.addEventListener("click", () => {
   const newName = prompt("Enter new username:");
   if (newName) {
+    // Prevent duplicate usernames
+    if (
+      Object.values(nicknames).includes(newName) ||
+      Object.keys(nicknames).includes(newName)
+    ) {
+      alert("That username is already taken. Please choose another.");
+      return;
+    }
+
+    const oldName = username;
     username = newName;
     localStorage.setItem("chat-username", username);
     alert("Username updated!");
+
+    // Notify server of change
+    socket.emit("username changed", { oldName, newName });
   }
+});
+
+// Nicknames dictionary
+let nicknames = {};
+
+// Listen for nickname updates
+socket.on("nicknames update", (data) => {
+  nicknames = data;
+  refreshMessages();
 });
 
 // Helper: add message to UI
 function addMessageToUI(data) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("message");
-
-  // Keep style: your messages = "self", others = "other"
   wrapper.classList.add(data.user === username ? "self" : "other");
 
   const name = document.createElement("div");
   name.classList.add("username");
-  name.textContent = data.user;
+
+  // Show nickname if exists
+  const displayName = nicknames[data.user] || data.user;
+  name.textContent = displayName;
 
   const msg = document.createElement("div");
   msg.textContent = data.text;
@@ -83,4 +106,10 @@ function addMessageToUI(data) {
   wrapper.appendChild(msg);
   messages.appendChild(wrapper);
   messages.scrollTop = messages.scrollHeight;
+}
+
+// Helper: refresh messages when nicknames update
+function refreshMessages() {
+  messages.innerHTML = "";
+  socket.emit("request history");
 }
